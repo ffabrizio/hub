@@ -1,0 +1,10 @@
+﻿@model Renesis.Models.Content.MazdaVideoContent
+<div class="form-group">
+	@Html.LabelFor(m => m.AccountId)
+	@Html.TextBoxFor(m => m.AccountId, new { @class = "form-control" })
+</div>
+<div class="form-group">
+	@Html.LabelFor(m => m.VideoId)
+	@Html.TextBoxFor(m => m.VideoId, new { @class = "form-control" })
+</div>
+@Html.HiddenFor(m => m.ContentType)

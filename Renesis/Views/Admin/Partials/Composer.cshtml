@@ -1,0 +1,29 @@
+﻿<div id="content-picker" class="modal fade" tabindex="-1" role="dialog"
+	aria-labelledby="content-pickerModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4>Select content</h4>
+			</div>
+			<div class="modal-body">
+				@Html.Partial("../Admin/Partials/Filters")
+				<table id="results" class="table table-responsive">
+					<thead>
+						<tr>
+							<th>Item</th>
+							<th>Created</th>
+							<th>Source</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+				<button aria-hidden="true" data-action="pager" class="btn btn-info hide"><i class="glyphicon glyphicon-refresh"></i>Show more</button>
+
+			</div>
+			<div class="modal-footer">
+			</div>
+		</div>
+	</div>
+</div>

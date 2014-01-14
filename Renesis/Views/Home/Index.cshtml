@@ -1,0 +1,10 @@
+﻿@model List<Renesis.Api.Config.Campaign>
+<ul class="list-group">
+@foreach (var campaign in Model)
+{
+	<li class="list-group-item">
+		<div class="list-group-item-heading">@campaign.CampaignFriendlyName</div>
+		<div class="list-group-item-text">@Html.RouteLink("Manage", new { controller = "admin", action = "index", campaign = @campaign.CampaignId })</div>
+	</li>
+}
+</ul>

@@ -1,0 +1,6 @@
+﻿@model Renesis.Models.Content.ImageContent
+<div class="form-group">
+	@Html.LabelFor(m => m.ImageUrl)
+	@Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control" })
+</div>
+@Html.HiddenFor(m => m.ContentType)

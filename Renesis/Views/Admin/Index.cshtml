@@ -1,0 +1,40 @@
+﻿@using Renesis.Api.Services
+@{
+	var contentService = ViewBag.Service as ContentService;
+	if (contentService == null)
+	{
+		return;
+	}
+
+	ViewBag.Title = contentService.Campaign.CampaignFriendlyName;
+}
+
+@Html.Partial("Partials/Filters")
+
+<table id="results" class="table table-responsive">
+	<thead>
+		<tr>
+			<th>Item</th><th>Created</th><th>Source</th><th>Info</th>
+		</tr>
+	</thead>
+	<tbody></tbody>
+</table>
+<div id="no-results" class="alert alert-warning">Nothing to show!</div>
+<button aria-hidden="true" data-action="pager" class="btn btn-info hide"><i class="glyphicon glyphicon-refresh"></i>&nbsp;Show more</button>
+<div class="btn-group pull-left">
+	@if (contentService.IsLocalInstance)
+	{
+	<label id="showMaster" class="checkbox"><input type="checkbox" checked="checked"/> Show master items</label>	
+	}
+</div>
+<div class="btn-group pull-right">
+	<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+		Create new&nbsp;<span class="caret"></span>
+	</a>
+	<ul class="dropdown-menu">
+		@*@foreach (var ct in contentService.GetContentTypes())
+		{
+		<li><a href="@Url.Action("create", "admin", new { id = ct.Value.ToLowerInvariant() })">@Html.ContentTypeIcon(ct.Value)&nbsp;@ct.Text</a></li>
+		}*@
+	</ul>
+</div>

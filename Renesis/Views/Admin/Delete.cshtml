@@ -1,0 +1,21 @@
+﻿@model Renesis.Api.Models.ContentItem
+@{
+	ViewBag.Title = "Delete";
+}
+@Html.Partial("Partials/View/ContentItem", @Model)
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+	<div id="delete-confirm" class="modal warning">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3>Delete content item</h3>
+			</div>
+			<div class="modal-body">Are you sure you want to delete <strong>@Model.Name</strong>?</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-danger" data-loading-text="Deleting..."><i class="glyphicon glyphicon-check"></i>&nbsp;OK</button>
+				<a class="btn" href="@Url.Action("details", new { id = Model.Id })"><i class="glyphicon glyphicon-stop"></i>&nbsp;Cancel</a>
+			</div>
+		</div>
+	</div>
+}

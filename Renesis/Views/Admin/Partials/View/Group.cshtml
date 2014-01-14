@@ -1,0 +1,15 @@
+﻿@using Renesis.Api.Services
+@model Renesis.Models.Content.GroupContent
+@{
+	var contentService = ViewBag.Service as ContentService;
+	if (contentService == null)
+	{
+		return;
+	}
+}
+<div data-module="@Model.Id">
+	@foreach (var content in Model.GetContentItems(contentService.CampaignConfig.CampaignId))
+    {
+      @Html.Partial("../admin/partials/view/" + content.ContentType, content)
+    }
+</div>

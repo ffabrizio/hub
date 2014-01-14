@@ -1,0 +1,55 @@
+﻿@using System.Globalization
+@using System.Web.Optimization
+@using Renesis.Api.Services
+@{
+	var contentService = ViewBag.Service as ContentService;
+}
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+
+	<title>MAZDA RENESIS: @ViewBag.Title</title>
+	
+	@Styles.Render("~/css/style.css")
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div id="header">
+			</div>
+		</div>
+		<div class="row">
+
+			@RenderBody()
+
+		</div>
+		<div class="row">
+			<div id="footer">
+			</div>
+		</div>
+	</div>
+	
+	@if (contentService != null)
+	{
+
+	<div id="server-data"
+		data-details-url="@Url.Action("details", "admin")" 
+		data-clone-url="@Url.Action("clone", "admin")"
+		data-master-culture="@contentService.Campaign.MasterCulture"
+		data-local-instance="@contentService.IsLocalInstance.ToString(CultureInfo.InvariantCulture).ToLowerInvariant()"
+		data-content-url="@Url.Content("~/" + contentService.Campaign.Culture + "/api/" + contentService.Campaign.CampaignId + "/content/search/")">
+	</div>
+
+	}
+	<script src="@Url.Content("~/scripts/require.js")" data-main="@Url.Content("~/scripts/app/main.js")"></script>
+	@*@Scripts.Render("~/scripts/lib.js")*@
+	@RenderSection("scripts", false)
+</body>
+
+</html>
