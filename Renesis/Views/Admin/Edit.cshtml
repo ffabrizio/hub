@@ -1,0 +1,9 @@
+﻿@model Renesis.Api.Models.ContentItem
+@{
+	ViewBag.Title = "Edit " + Model.Name;
+}
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+	@Html.Partial("Partials/ContentForm", Model)
+}

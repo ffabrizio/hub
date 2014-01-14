@@ -1,0 +1,33 @@
+﻿@using Renesis.Services
+@model Renesis.Models.Content.GroupContent
+@{
+	var contentService = ViewBag.Service as ContentService;
+	if (contentService == null)
+	{
+		return;
+	}
+}
+@Html.Partial("../Admin/Partials/Composer")
+<div class="form-group">
+	@Html.LabelFor(m => m.GroupType)
+	@Html.TextBoxFor(m => m.GroupType, new { @class = "form-control" })
+</div>
+<div class="form-group">
+	@Html.LabelFor(m => m.ActionText)
+	@Html.TextBoxFor(m => m.ActionText, new { @class = "form-control" })
+</div>
+<div class="form-group">
+	@Html.LabelFor(m => m.ActionLink)
+	@Html.TextBoxFor(m => m.ActionLink, new { @class = "form-control" })
+</div>
+<div class="form-group">
+	@Html.LabelFor(m => m.ContentItemsReferences)
+	<div data-role="composition" class="panel panel-success panel-body">
+	@foreach (var content in Model.GetContentItems(contentService.CampaignConfig.CampaignId))
+    {
+		@Html.Partial("../admin/partials/view/" + content.ContentType, content)
+    }
+	</div>
+</div>
+@Html.HiddenFor(m => m.ContentItemsReferences)
+@Html.HiddenFor(m => m.ContentType)

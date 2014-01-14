@@ -1,0 +1,32 @@
+﻿@using Renesis.Api.Services
+@model Renesis.Api.Models.ContentItem
+@{
+	var contentService = ViewBag.Service as ContentService;
+	if (contentService == null)
+	{
+		return;
+	}
+}
+
+@*<article>
+    <h1>@Model.Name</h1>
+    <h2>@Model.Intro</h2>
+    @Html.Partial("Partials/View/" + @Model.ContentType)
+    <hr />
+    <p><i class="glyphicon glyphicon-time"></i>&nbsp;@Model.CreationDate.ToString("ddd MMMM dd yyyy")</p>
+    <p><i class="glyphicon glyphicon-file"></i>&nbsp;@contentService.GetContentType(Model.ContentType)</p>
+    <p><i class="glyphicon glyphicon-folder-close"></i>&nbsp;@contentService.GetCategory(Model.Category)</p>
+
+    @if (Model.Tags != null && Model.Tags.Count > 0)
+    {
+        <p><i class="glyphicon glyphicon-tags"></i>&nbsp;@contentService.GetTags(Model.Tags)</p>
+    }
+    @if (Model.IsShared)
+    {
+        <p><i class="glyphicon glyphicon-share"></i>&nbsp;Shared</p>
+    }
+    @if (Model.IsFeatured)
+    {
+        <p><i class="glyphicon glyphicon-flash"></i>&nbsp;Feature</p>
+    }
+</article>*@

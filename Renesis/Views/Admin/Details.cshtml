@@ -1,0 +1,7 @@
+﻿@model Renesis.Api.Models.ContentItem
+@{ ViewBag.Title = Model.Name; }
+@Html.Partial("Partials/View/ContentItem", @Model)
+<hr />
+<a class="btn btn-primary" href="@Url.Action("edit", new { id = Model.Id })"><i class="glyphicon glyphicon-edit"></i>&nbsp;Edit</a>
+<a class="btn btn-danger" href="@Url.Action("delete", new { id = Model.Id })"><i class="glyphicon glyphicon-trash"></i>&nbsp;Delete</a>
+<a class="btn" href="@Url.Action("index")"><i class="glyphicon glyphicon-list"></i>&nbsp;Back to list</a>

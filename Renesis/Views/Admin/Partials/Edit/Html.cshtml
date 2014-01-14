@@ -1,0 +1,6 @@
+﻿@model Renesis.Models.Content.HtmlContent
+<div class="form-group">
+	@Html.LabelFor(m => m.Body)
+	@Html.TextAreaFor(m => m.Body, new { data_editor = "true" })
+</div>
+@Html.HiddenFor(m => m.ContentType)

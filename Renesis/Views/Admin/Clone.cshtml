@@ -1,0 +1,9 @@
+﻿@model Renesis.Api.Models.ContentItem
+@{
+	ViewBag.Title = "Clone " + Model.Name;
+}
+@using (Html.BeginForm("create", "admin"))
+{
+	@Html.AntiForgeryToken()
+	@Html.Partial("Partials/ContentForm", Model)
+}

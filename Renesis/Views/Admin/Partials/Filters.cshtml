@@ -1,0 +1,75 @@
+﻿@using Renesis.Api.Services
+@{
+	var contentService = ViewBag.Service as ContentService;
+	if (contentService == null)
+	{
+		return;
+	}
+}
+
+@*<nav id="filters" class="navbar navbar-inverse" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="[role='main-menu']">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="@Url.Action("index", "admin")">@ViewBag.Title</a>
+  </div>
+  <div class="collapse navbar-collapse" data-role="main-menu">
+		<ul class="nav navbar-nav" role="navigation">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tags&nbsp;<i class="caret"></i></a>
+				<ul class="dropdown-menu">
+					@foreach (var tag in contentService.GetTags())
+					{
+						<li>
+							<label class="checkbox-normal">&nbsp;<input type="checkbox" name="tags" value="@tag.Value" />&nbsp;@tag.Text</label>
+						</li>
+					}
+				</ul>
+			</li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories&nbsp;<i class="caret"></i></a>
+				<ul class="dropdown-menu">
+					@foreach (var cat in contentService.GetCategories())
+					{
+						<li>
+							<label class="checkbox-normal">&nbsp;<input type="checkbox" name="categories" value="@cat.Value" />&nbsp;@cat.Text</label>
+						</li>
+					}
+				</ul>
+			</li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Types&nbsp;<i class="caret"></i></a>
+				<ul class="dropdown-menu">
+					@foreach (var t in contentService.GetContentTypes())
+					{
+						<li>
+							<label class="checkbox-normal">&nbsp;<input type="checkbox" name="types" value="@t.Value" />&nbsp;@t.Text</label>
+						</li>
+					}
+				</ul>
+			</li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Status&nbsp;<i class="caret"></i></a>
+				<ul class="dropdown-menu">
+					<li>
+						<label class="checkbox-normal">&nbsp;<input type="checkbox" name="active" value="true" />&nbsp;Visible</label>
+					</li>
+					<li>
+						<label class="checkbox-normal">&nbsp;<input type="checkbox" name="active" value="false" />&nbsp;Hidden</label>
+					</li>
+				</ul>
+			</li>
+		</ul>
+
+		<div class="navbar-form navbar-right" role="search">
+			<div class="form-group">
+				<input type="text" placeholder="Search..." class="form-control" />
+			</div>
+			<a class="btn btn-default" data-role="search-button"><i class="glyphicon glyphicon-search"></i></a>
+		</div>
+  </div>
+</nav>*@
