@@ -10,10 +10,10 @@
 			source = 'Local',
 			url = settings.detailsUrl;
 
-		if (item.CultureCode == settings.masterCulture && settings.isLocalInstance) {
+		if (item.CultureCode == settings.masterCulture && !settings.isMaster) {
 			tr = '<tr class="danger">';
 			source = 'Master';
-			if (settings.isLocalInstance) url = settings.cloneUrl;
+			if (!settings.isMaster) url = settings.cloneUrl;
 		}
 
 		return tr + '<td>' + getItemIconHtml(item.ContentTypeIcon, item) + '<a href="' +

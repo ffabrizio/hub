@@ -3,7 +3,6 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Web.Mvc;
-using System.Web.Routing;
 using Renesis.Api.Config;
 using Renesis.Api.Models;
 using Renesis.Api.Services;
@@ -11,7 +10,7 @@ using Renesis.Models.Utils;
 
 namespace Renesis.Controllers
 {
-    //[Authorize]
+    [Authorize]
 	public class AdminController : Controller
 	{
 		public ActionResult Index()
@@ -19,16 +18,15 @@ namespace Renesis.Controllers
 			var contentService = GetService();
 			if (contentService == null)
 			{
-                Redirect("~/" + RouteData.Values["culture"] + "/home");
-                //return RedirectToRoute(new
-                //{
-                //    Controller = "Home", 
-                //    Action = "Index", 
-                //    Culture = RouteData.Values["culture"] ?? string.Empty
-                //});
-				//return RedirectToAction("index", "home");
+                return RedirectToRoute(new
+                {
+                    controller = "home",
+                    action = "index",
+                    culture = RouteData.Values["culture"]
+                });
 			}
 
+            ViewBag.Country = RouteData.Values["culture"];
 			return View();
 		}
 

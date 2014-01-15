@@ -8,93 +8,78 @@
 		return;
 	}
 }
-<fieldset>
-	<legend>@Model.ContentType item</legend>
-	<div class="form-group">
-		@Html.LabelFor(m => m.Name)
-		@Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
-	</div>
+<fieldset title="Common settings">
+    <legend>@Model.ContentType item</legend>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+    </div>
 
-	<div class="form-group">
-		@Html.LabelFor(m => m.Intro)
-		@Html.TextBoxFor(m => m.Intro, new { @class = "form-control" })
-	</div>
-	
-	<div class="form-group">
-		@Html.LabelFor(m => m.ThumbnailUrl)
-		@Html.TextBoxFor(m => m.ThumbnailUrl, new { @class = "form-control" })
-	</div>
-	
-	<div class="form-group">
-		@Html.LabelFor(m => m.ExternalUrl)
-		@Html.TextBoxFor(m => m.ExternalUrl, new { @class = "form-control" })
-	</div>
-
-	@Html.Partial("partials/edit/" + Model.ContentType)
-
-	<div class="form-group">
-		@Html.LabelFor(m => m.CreationDate)
-
-		<div id="DPCreationDate" class="input-group">
-			<input class="form-control" name="CreationDate" type="date" value="@Model.CreationDate.ToString("yyyy-MM-dd")" data-date-format="yyyy-mm-dd">
-			<span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-		</div>
-	</div>
-
-	<div class="checkbox">
-		<label>
-			@Html.CheckBoxFor(m => m.IsActive) Active and visible
-		</label>
-	</div>
-	
-	<div class="checkbox">
-		<label>
-			@Html.CheckBoxFor(m => m.IsFeatured) Featured
-		</label>
-	</div>
-	
-	<div class="checkbox">
-		<label>
-		@if (!string.IsNullOrEmpty(Model.CampaignId) && Model.CampaignId.Equals(RenesisConfiguration.Current.SharedCampaignValue))
-		{
-			<input type="checkbox" value="on" name="CampaignShare" checked="checked" /> <text>Shared across campaigns</text>
-		}
-		else
-		{
-			<input type="checkbox" value="on" name="CampaignShare" /> <text>Shared across campaigns</text>
-		}
-		</label>
-	</div>
-
-	@*<div class="form-group">
-		@Html.LabelFor(m => m.Category)
-		@Html.DropDownListFor(m => m.Category, contentService.GetCategories(), new { @class = "form-control" })
-	</div>
-
-	<div class="form-group">
-		@Html.LabelFor(m => m.Tags)
-		@foreach (var tag in contentService.GetTags())
-		{
-		<label class="checkbox checkbox-normal">
-			@if (Model.Tags != null && Model.Tags.Contains(tag.Value))
-			{
-			<input type="checkbox" name="Tags" value="@tag.Value" checked="checked" /> @tag.Text
-			}
-			else
-			{
-			<input type="checkbox" name="Tags" value="@tag.Value" /> @tag.Text
-			}
-		</label>
-		}
-	</div>*@
-	<input type="hidden" name="CampaignId" value="@contentService.Campaign.CampaignId"/>
-	@Html.HiddenFor(m => m.MasterId)
-	@Html.HiddenFor(m => m.CultureCode)
-	<hr />
-	<button id="submitBtn" type="submit" class="btn btn-primary" data-loading-text="Saving..."><i class="glyphicon glyphicon-save"></i>&nbsp;Save</button>
-	<a class="btn" href="@Url.Action("index")"><i class="glyphicon glyphicon-list"></i>&nbsp;Back to list</a>
-	@if (!string.IsNullOrEmpty(Model.Id) && Request.RequestContext.RouteData.Values["action"].ToString().ToLowerInvariant() != "clone")
-	{
-	<a class="btn" href="@Url.Action("details", new { id = Model.Id })"><i class="glyphicon glyphicon-stop"></i>&nbsp;Back to item</a>
-	}
+    <div class="form-group">
+        @Html.LabelFor(m => m.Intro)
+        @Html.TextBoxFor(m => m.Intro, new { @class = "form-control" })
+    </div>
 </fieldset>
+
+<fieldset title="Item settings">
+    @Html.Partial("partials/edit/" + Model.ContentType)
+</fieldset>
+
+<fieldset title="Taxonomy settings">
+    <div class="form-group">
+        @Html.LabelFor(m => m.Category)
+        @Html.DropDownListFor(m => m.Category, contentService.GetCategories(), new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Tags)
+        @foreach (var tag in contentService.GetTags())
+        {
+            <label class="checkbox checkbox-normal">
+                @if (Model.Tags != null && Model.Tags.Contains(tag.Value))
+                {
+                    <input type="checkbox" name="Tags" value="@tag.Value" checked="checked" /> @tag.Text
+                }
+                else
+                {
+                    <input type="checkbox" name="Tags" value="@tag.Value" /> @tag.Text
+                }
+            </label>
+        }
+    </div>
+</fieldset>
+
+<fieldset title="Publishing settings">
+    <div class="form-group">
+        @Html.LabelFor(m => m.CreationDate)
+
+        <div id="DPCreationDate" class="input-group">
+            <input class="form-control" name="CreationDate" type="date" value="@Model.CreationDate.ToString("yyyy-MM-dd")" data-date-format="yyyy-mm-dd">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+        </div>
+    </div>
+
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.IsActive) Active and visible
+        </label>
+    </div>
+
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m => m.IsFeatured) Featured
+        </label>
+    </div>
+</fieldset>
+
+<input type="hidden" name="CampaignId" value="@contentService.Campaign.CampaignId" />
+@Html.HiddenFor(m => m.MasterId)
+@Html.HiddenFor(m => m.CultureCode)
+<hr />
+<button id="submitBtn" type="submit" class="btn btn-primary" data-loading-text="Saving..."><i class="glyphicon glyphicon-save"></i>&nbsp;Save</button>
+<a class="btn" href="@Url.Action("index")"><i class="glyphicon glyphicon-list"></i>&nbsp;Back to list</a>
+@if (!string.IsNullOrEmpty(Model.Id) && Request.RequestContext.RouteData.Values["action"].ToString().ToLowerInvariant() != "clone")
+{
+    <a class="btn" href="@Url.Action("details", new { id = Model.Id })"><i class="glyphicon glyphicon-stop"></i>&nbsp;Back to item</a>
+}
+

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 using MongoRepository;
-using Renesis.Api.Config;
 
 namespace Renesis.Api.Models
 {
+    [KnownType("DiscoverKnownTypes")]
     public abstract class ContentItem : IEntity
     {
         public string Id { get; set; }
@@ -50,10 +51,7 @@ namespace Renesis.Api.Models
             Category = collection["Category"];
             MasterId = collection["MasterId"];
             CultureCode = collection["CultureCode"];
-
-            CampaignId = collection["CampaignShare"] != "on" ?
-                collection["CampaignId"] :
-                RenesisConfiguration.Current.SharedCampaignValue;
+            CampaignId = collection["CampaignId"];
 
             DateTime creationDate;
             CreationDate = DateTime.TryParse(collection["CreationDate"], out creationDate) ? creationDate : DateTime.UtcNow;
@@ -66,6 +64,11 @@ namespace Renesis.Api.Models
                     Tags.Add(tag.Trim());
                 }
             }
+        }
+
+        internal static Type[] DiscoverKnownTypes()
+        {
+            return KnowTypeDiscovery.GetKnownTypes();
         }
     }
 }

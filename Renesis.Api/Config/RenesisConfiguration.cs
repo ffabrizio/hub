@@ -26,14 +26,6 @@ namespace Renesis.Api.Config
             set { base["sites"] = value; }
         }
 
-        public string SharedCampaignValue
-        {
-            get
-            {
-                return "__shared";
-            }
-        }
-
         public Site GetSite(string culture)
         {
             return Sites.OfType<Site>()
@@ -47,7 +39,7 @@ namespace Renesis.Api.Config
             {
                 foreach (Campaign campaign in site.Campaigns)
                 {
-                    campaign.Culture = site.CultureCode;
+                    campaign.Culture = site.CultureCode.ToLowerInvariant();
                     campaigns.Add(campaign);
                 }
             }

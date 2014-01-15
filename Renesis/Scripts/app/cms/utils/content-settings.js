@@ -16,7 +16,7 @@
 
 		settings.detailsUrl = server.data('details-url');
 		settings.cloneUrl = server.data('clone-url');
-		settings.isLocalInstance = server.data('local-instance');
+		settings.isMaster = server.data('master');
 		settings.currentCulture = server.data('current-culture');
 		settings.masterCulture = server.data('master-culture');
 		settings.contentServer = server.data('content-url');

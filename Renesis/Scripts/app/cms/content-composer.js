@@ -93,7 +93,7 @@
 	};
 
 	var addModuleControls = function (t) {
-		if ((t.CultureCode == settings.masterCulture && settings.isLocalInstance) || !t.IsActive) {
+		if ((t.CultureCode == settings.masterCulture && !settings.isMaster) || !t.IsActive) {
 			return '<i class="glyphicon glyphicon-eye-close"></i> Hidden';
 		}
 

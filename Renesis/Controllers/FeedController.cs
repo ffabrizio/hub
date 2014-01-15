@@ -26,8 +26,8 @@ namespace Renesis.Controllers
 				  var culture = Request.GetRouteData().Values["culture"] ?? string.Empty;
                   var campaign = Request.GetRouteData().Values["campaign"] ?? string.Empty;
 				  var contentService = ContentService.GetInstance(culture.ToString(), campaign.ToString());
-				  var items = contentService.GetPublished()
-                          .Where(i => string.Equals(i.CultureCode, contentService.Campaign.Culture, StringComparison.InvariantCultureIgnoreCase));
+				  var items = contentService.GetPublished();
+                          //.Where(i => i.CultureCode == contentService.Campaign.Culture);
 
 				  if (!int.TryParse(contentService.Campaign.ApiPageSize, out pagecount))
 				  {

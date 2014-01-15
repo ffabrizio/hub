@@ -41,8 +41,8 @@
 	<div id="server-data"
 		data-details-url="@Url.Action("details", "admin")" 
 		data-clone-url="@Url.Action("clone", "admin")"
-		data-master-culture="@contentService.Campaign.MasterCulture"
-		data-local-instance="@contentService.IsLocalInstance.ToString(CultureInfo.InvariantCulture).ToLowerInvariant()"
+		data-master-culture="@contentService.Campaign.MasterCulture.ToLowerInvariant()"
+		data-master="@contentService.IsMaster.ToString(CultureInfo.InvariantCulture).ToLowerInvariant()"
 		data-content-url="@Url.Content("~/" + contentService.Campaign.Culture + "/api/" + contentService.Campaign.CampaignId + "/content/search/")">
 	</div>
 

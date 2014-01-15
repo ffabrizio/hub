@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Linq;
-using Renesis.Api.Models;
 
-namespace Renesis.Models.Utils
+namespace Renesis.Api.Models
 {
 	public class KnowTypeDiscovery
 	{

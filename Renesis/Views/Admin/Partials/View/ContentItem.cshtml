@@ -8,7 +8,7 @@
 	}
 }
 
-@*<article>
+<article>
     <h1>@Model.Name</h1>
     <h2>@Model.Intro</h2>
     @Html.Partial("Partials/View/" + @Model.ContentType)
@@ -21,12 +21,8 @@
     {
         <p><i class="glyphicon glyphicon-tags"></i>&nbsp;@contentService.GetTags(Model.Tags)</p>
     }
-    @if (Model.IsShared)
-    {
-        <p><i class="glyphicon glyphicon-share"></i>&nbsp;Shared</p>
-    }
     @if (Model.IsFeatured)
     {
         <p><i class="glyphicon glyphicon-flash"></i>&nbsp;Feature</p>
     }
-</article>*@
+</article>

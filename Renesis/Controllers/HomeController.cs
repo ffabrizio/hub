@@ -10,15 +10,28 @@ namespace Renesis.Controllers
     [Authorize]
 	public class HomeController : Controller
 	{
-		public ActionResult Index(string culture)
+        public ActionResult Welcome()
+        {
+            ViewBag.Title = "Welcome";
+            return View();
+        }
+
+        public ActionResult Index(string culture)
 		{
-			var campaigns = RenesisConfiguration.Current.GetCampaigns().Where(c => string.Equals(c.Culture, culture, StringComparison.InvariantCultureIgnoreCase));
-			return View(campaigns.ToList());
+            if (string.IsNullOrEmpty(culture))
+            {
+                return View("welcome");
+            }
+            var campaigns = RenesisConfiguration.Current.GetCampaigns().Where(c => string.Equals(c.Culture, culture, StringComparison.InvariantCultureIgnoreCase));
+
+            ViewBag.Title = "Select campaign";
+            return View(campaigns.ToList());
 		}
 
 		[AllowAnonymous]
 		public ActionResult Login(string returnUrl)
 		{
+            ViewBag.Title = "Login";
 			ViewBag.ReturnUrl = returnUrl;
 			return View();
 		}
@@ -33,6 +46,8 @@ namespace Renesis.Controllers
                 FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
                 return RedirectToAction("index");
 			}
+
+            ViewBag.Title = "Login";
 			return View(model);
 		}
 	}

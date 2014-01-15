@@ -7,7 +7,7 @@ using Renesis.Services;
 
 namespace Renesis.Controllers
 {
-    //[Authorize]
+    [Authorize]
 	public class ContentController : ApiController
 	{
 		public async Task<HttpResponseMessage> Get()

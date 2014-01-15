@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Linq;
 using Renesis.Api.Models;
 using Renesis.Api.Services;
-using Renesis.Services;
 
 namespace Renesis.Models.Content
 {

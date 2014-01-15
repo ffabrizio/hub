@@ -8,7 +8,7 @@
 	}
 }
 <div data-module="@Model.Id">
-	@foreach (var content in Model.GetContentItems(contentService.CampaignConfig.CampaignId))
+	@foreach (var content in Model.GetContentItems(contentService))
     {
       @Html.Partial("../admin/partials/view/" + content.ContentType, content)
     }

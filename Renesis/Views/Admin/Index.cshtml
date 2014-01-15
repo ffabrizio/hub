@@ -1,4 +1,5 @@
 ﻿@using Renesis.Api.Services
+@using Renesis.Models.Extensions
 @{
 	var contentService = ViewBag.Service as ContentService;
 	if (contentService == null)
@@ -22,7 +23,7 @@
 <div id="no-results" class="alert alert-warning">Nothing to show!</div>
 <button aria-hidden="true" data-action="pager" class="btn btn-info hide"><i class="glyphicon glyphicon-refresh"></i>&nbsp;Show more</button>
 <div class="btn-group pull-left">
-	@if (contentService.IsLocalInstance)
+	@if (!contentService.IsMaster)
 	{
 	<label id="showMaster" class="checkbox"><input type="checkbox" checked="checked"/> Show master items</label>	
 	}
@@ -32,9 +33,9 @@
 		Create new&nbsp;<span class="caret"></span>
 	</a>
 	<ul class="dropdown-menu">
-		@*@foreach (var ct in contentService.GetContentTypes())
+		@foreach (var ct in contentService.GetContentTypes())
 		{
 		<li><a href="@Url.Action("create", "admin", new { id = ct.Value.ToLowerInvariant() })">@Html.ContentTypeIcon(ct.Value)&nbsp;@ct.Text</a></li>
-		}*@
+		}
 	</ul>
 </div>

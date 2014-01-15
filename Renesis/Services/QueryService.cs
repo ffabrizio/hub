@@ -67,7 +67,7 @@ namespace Renesis.Services
 				wrapper.Items = new List<ContentItem>(wrapper.Items.Where(i => typeNames.Contains(i.ContentType)));
 			}
 
-			if (svc.IsLocalInstance)
+			if (!svc.IsMaster)
 			{
 				wrapper.Items.InsertRange(0, svc.GetMasters());
 			}
