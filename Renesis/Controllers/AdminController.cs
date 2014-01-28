@@ -10,7 +10,7 @@ using Renesis.Models.Utils;
 
 namespace Renesis.Controllers
 {
-    [Authorize]
+    //[Authorize]
 	public class AdminController : Controller
 	{
 		public ActionResult Index()

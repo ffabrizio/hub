@@ -7,7 +7,7 @@ using Renesis.Models;
 
 namespace Renesis.Controllers
 {
-    [Authorize]
+    //[Authorize]
 	public class HomeController : Controller
 	{
         public ActionResult Welcome()

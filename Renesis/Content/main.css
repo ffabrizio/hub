@@ -31,3 +31,68 @@ iframe {
 	width: 100%;
 	height: 100%;
 }
+
+@font-face {
+    font-family: 'DefaultBold';
+    src: url('../fonts/interstatemazda-bold-webfont.eot');
+    src: url('../fonts/interstatemazda-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/interstatemazda-bold-webfont.woff') format('woff'),
+         url('../fonts/interstatemazda-bold-webfont.ttf') format('truetype'),
+         url('../fonts/interstatemazda-bold-webfont.svg#InterstateMazdaBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DefaultItalic';
+    src: url('../fonts/interstatemazda-italic-webfont.eot');
+    src: url('../fonts/interstatemazda-italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/interstatemazda-italic-webfont.woff') format('woff'),
+         url('../fonts/interstatemazda-italic-webfont.ttf') format('truetype'),
+         url('../fonts/interstatemazda-italic-webfont.svg#InterstateMazdaItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DefaultRegular';
+    src: url('../fonts/interstatemazda-regular-webfont.eot');
+    src: url('../fonts/interstatemazda-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/interstatemazda-regular-webfont.woff') format('woff'),
+         url('../fonts/interstatemazda-regular-webfont.ttf') format('truetype'),
+         url('../fonts/interstatemazda-regular-webfont.svg#InterstateMazdaRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DefaultLight';
+    src: url('../fonts/interstatemazda-light-webfont.eot');
+    src: url('../fonts/interstatemazda-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/interstatemazda-light-webfont.woff') format('woff'),
+         url('../fonts/interstatemazda-light-webfont.ttf') format('truetype'),
+         url('../fonts/interstatemazda-light-webfont.svg#InterstateMazdaLight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DefaultLightItalic';
+    src: url('../fonts/interstatemazda-lightitalic-webfont.eot');
+    src: url('../fonts/interstatemazda-lightitalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/interstatemazda-lightitalic-webfont.woff') format('woff'),
+         url('../fonts/interstatemazda-lightitalic-webfont.ttf') format('truetype'),
+         url('../fonts/interstatemazda-lightitalic-webfont.svg#InterstateMazdaLightItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+h1, h2, p, li, a, label, td, button, div {
+    font-family: DefaultRegular;
+    -webkit-font-smoothing: antialiased;
+}
+
+.modal-dialog {
+    width: 80%;
+}
